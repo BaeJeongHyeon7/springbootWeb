@@ -33,7 +33,7 @@ public class BoardController {
 	@Autowired
 	private ReplyRepository replyRepository;
 	
-	
+	// 0304컨트롤러
 	@GetMapping("/")
 	public String index(Model model,
 					@RequestParam(defaultValue="0") int page) {
