@@ -1,0 +1,42 @@
+{{>./layouts/header}}
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">Title</th>
+			<th scope="col">Content</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- 컨트롤러에서 넘어오는 Model 객체에 저장되서 넘어오는 데이터에 "."을 찍어서 멤버에 접근한다. -->
+		<!--
+		<tr>
+			<td>{{article.id}}</td>
+			<td>{{article.title}}</td>
+			<td>{{article.content}}</td>
+		</tr>
+		-->
+		
+		{{#article}} <!-- article 시작, 범위 지정시 넘어오는 데이터는 "#"을 붙여서 받는다. -->
+		<tr>
+			<td>{{id}}</td> <!-- 넘어온 객체의 멤버에 접근한다. -->
+			<td>{{title}}</td>
+			<td>{{content}}</td>
+		</tr>
+		{{/article}} <!-- article 끝 -->
+	</tbody>
+</table>
+
+<!-- 목록으로 돌아가는 링크 추가 -->
+<a href="/articles" class="btn btn-success">목록으로</a>
+<!-- 글 수정 링크 추가 -->
+
+<a href="/articles/{{article.id}}/edit" class="btn btn-info">수정하기</a>
+<!-- 글 삭제 링크 추가 -->
+
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">삭제하기</a>
+
+<!-- 댓글 출력 템플릿을 삽입한다.  -->
+{{>./comments/_comments}}
+
+{{>./layouts/footer}}
