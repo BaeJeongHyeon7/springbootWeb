@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Main page</title>
+		<style>
+			* {
+				margin: 0;
+			}
+
+			main {
+				border: 0px solid;
+				width: 100vw;
+				height: 100vh;
+				/*
+					설명:
+						vw와 vh는 (vertical width, vertical height)의 약자.
+						일반적으로 좌우/상하 전체확대(꽉차는 사이즈, 반응형 웹 구현) 시 %(퍼센트)를 많이 사용 --> 한계.
+						새로운 단위인 --> vw, vh
+						vw, vh 단위는 뷰포트 크기(보통 브라우저 창)의 1/100에 해당.
+						예) 브라우저 높이 --> 768px --> 1vh는 7.68px (너비도 마찬가지로 계산)
+						요즘에는 주로 반응형 웹 구현 시 많이 사용.
+						이때 폰트 사이즈 또한 루트 폰트크기를 기준으로 적용이 될 수 있도록 rem, em 등을 많이 사용.
+						100vw, 100vh --> 해당 요소를 브라우저 크기에 꽉 차게 만들어줌.
+						font-size에 적용도 가능 --> 같이 반응.
+				*/
+				background: #ddd;
+				display: flex;
+				justify-content: center;  	/* 좌우 기준 */
+				align-items: center;		/* 상하 기준 */
+				flex-direction: column;		/* 자식요소 수직정렬 */
+			}
+			
+			main > button {
+				width: 300px;
+				height: 70px;
+				background: red;
+				color: white;
+				padding: 20px 40px;
+				border-radius: 100px;
+				border: none;
+				font-size: 1em;
+				cursor: pointer;
+				margin-bottom: 10px;
+			}
+			
+			main > button:nth-child(2) {
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<main>
+		
+			<button th:onclick="'location.href=\'' + @{/jpa/memberList( page=0 )} +'\';'">JPA Member List</button>
+
+			<button onClick="location.href='/jpa/memberWrite';">JPA Member Registration</button>
+		</main>
+
+	</body>
+</html>
